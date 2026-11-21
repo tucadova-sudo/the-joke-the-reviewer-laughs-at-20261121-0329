@@ -22,6 +22,8 @@ def main() -> None:
         raise SystemExit("joke must be 1 to 280 Unicode code points")
     if not JOKE.strip():
         raise SystemExit("joke must not be only white space")
+    if "\n" in JOKE or "\r" in JOKE:
+        raise SystemExit("joke must be a single line")
     with open(target, "wb") as f:
         f.write(data)
     with open(target, "rb") as f:
